@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Login</title>
+     <link rel="stylesheet" href="signup.css">
+     
+</head>
+<body>
+     <div class="main">
+          <fieldset class="field" style="height: 400px; margin-top: 150px;">
+               <h1 class="head" style="margin-bottom: 30px;">Instagram Login</h1>
+               <br>
+               <div class="Username">
+                    <label for="username" >Username</label>
+                    <br>
+                    <input type="text" required="required" placeholder="@lbraheem" class="username" id="username"style="margin-left: 3px; width: 400px;height: 30px; border-radius: 2px;" >
+               </div>
+               <br>
+               <div class="password">
+                    <label for="password" >Password</label>
+                    <br>
+                    <input type="password" required="required" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" style="width: 400px;height: 30px; border-radius: 2px;" >
+               </div>
+               <br>
+               <input type="submit" value="Log in" class="signup" style="width: 400px; margin-left: 23px;background-color:  #3897f0;cursor: pointer;height: 30px; border-radius: 2px;" id="submit" >
+               <br>
+               <br>
+               <h3 class="forgot" style="margin-top: 20px;"><a href="#" style="text-decoration: none;">Forgot Password?</a></h3>
+               <h3 class="forgot"><a href="#"  style="text-decoration: none;">Log in</a></h3>
+
+          </fieldset>
+     </div>
+     <script>
+          const fromSubmit=document.getElementById("submit")
+          fromSubmit.addEventListener("click",(event)=>{
+               event.preventDefault();
+               const username=document.getElementById("username").value
+               const userPassword=document.getElementById("password").value
+               const userData={
+                    username:username,
+                    password:userPassword
+               }
+                loginUser(userData)
+                console.log(userData);
+          })
+          const loginUser=async (payload)=>{
+               try{
+                    const resp=await fetch("http://localhost:5050/login",{
+                         method:"POST",
+                         credentials:'include',
+                         redirect:'follow',
+                         headers:{"content-type":"application/json"},
+                         body:JSON.stringify(payload)
+                    })
+                    const data=await resp.json();
+                    console.log(data);
+                    window.location.href="http://localhost:5500/client/index.html"
+               }
+               catch(error){
+                    console.log(error.message);
+               }
+          }
+     </script>
+</body>
+</html>

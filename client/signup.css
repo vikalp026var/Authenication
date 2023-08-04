@@ -1,0 +1,44 @@
+*{
+     margin: 0;
+     padding: 0;
+     overflow: hidden;
+}
+/* body{
+    
+} */
+.field{
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     width: 30%;
+     height: 550px; 
+     margin-left: 35%;
+     margin-top: 90px;
+     background-color: #fff;
+     border-radius: 5px;
+}
+.head{
+     margin-top: 20px;
+     margin-left: 90px;
+}
+
+.name, .Username, .email, .password, .bio, .submit{
+     margin-left: 20px;
+     
+}
+.labelname,.labelemail{
+     margin-left: 0px;
+}
+.forgot{
+     display: inline;
+     color: gray;
+     font-size: small;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+     margin-left: 90px;
+     margin-top: 50px;
+     
+}
+.submit:hover{
+     background-color: #357ae8;
+}
+
